@@ -34,13 +34,15 @@ def makeable_values(nums, ops)
 
     if nums.size == 2 then
         values = []
-	ops.each { |op|
-            next if skip?(nums[0], op, nums[1])
-            values << calculate(nums[0], op, nums[1]) 
+        ops.each { |op|
+            unless skip?(nums[0], op, nums[1])
+                values << calculate(nums[0], op, nums[1])
+            end
 
             if !commutative?(op) then
-            	next if skip?(nums[1], op, nums[0])
-                values << calculate(nums[1], op, nums[0]) 
+                unless skip?(nums[1], op, nums[0])
+                    values << calculate(nums[1], op, nums[0])
+                end
             end
         }
         return values.uniq

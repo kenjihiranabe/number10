@@ -15,6 +15,10 @@ assert values == [3]
 values = makeable_values([5,1], [:-])
 assert values.sort == [-4,4].sort
 
+# test: 2つと /
+values = makeable_values([4,8], [:/])
+assert values.sort == [2].sort
+
 # test: 2つと +-*/
 values = makeable_values([3,7], [:+, :-, :*, :/])
 assert values.sort == [-4, 4, 10, 21].sort
